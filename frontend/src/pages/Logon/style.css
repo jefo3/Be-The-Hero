@@ -1,0 +1,26 @@
+.logon-conteiner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    max-width: 1120px;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.logon-conteiner section.form {
+    width: 100%;
+    max-width: 350px;
+    margin-right: 35px;
+}
+
+.logon-conteiner section.form form{
+    margin-top: 100px;
+}
+
+.logon-conteiner section.form form h1 {
+    font-size: 32px;
+    margin-bottom: 32px;
+    font-weight: 700;
+}
