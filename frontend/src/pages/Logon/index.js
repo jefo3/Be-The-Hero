@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import './style.css';
 
-import { FiLogIn } from 'react-icons/fi';
+import { FiLogIn, FiArrowLeft } from 'react-icons/fi';
 
 import heroImg from '../../assets/heroes.png';
 import logoImg from '../../assets/logo.svg';
@@ -52,6 +52,12 @@ export default function Logon() {
                         <FiLogIn size={16} color="#e02041"/>
                         Nao tenho cadastro
                     </Link>
+                    
+                    <Link className="back-link" to="/">
+                        <FiArrowLeft size={16} color="#e02041"/>
+                        Voltar
+                    </Link>
+
                 </form>
             </section>
             <img src={heroImg}/>

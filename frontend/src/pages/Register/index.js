@@ -33,7 +33,7 @@ export default function Register() {
             const response = await api.post('/ongs', data);
             
             alert(`Seu ID: ${response.data.id}`);
-            history.push('/')
+            history.push('/login')
         }catch(err){
             alert('Falha no cadastro');
         }
@@ -49,7 +49,7 @@ export default function Register() {
                     
                     <p>Faça seu cadastro e ajude as pessoas a encontrarem os casos da sua ONG</p>
 
-                    <Link className="back-link" to="/">
+                    <Link className="back-link" to="/login">
                         <FiArrowLeft size={16} color="#e02041"/>
                         Voltar para o Logon
                     </Link>

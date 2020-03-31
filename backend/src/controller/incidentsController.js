@@ -18,21 +18,23 @@ module.exports = {
 
     async index(request, response) {
         const [count] = await connection('incidents').count();//conta quantas ocorrencias na tabela 
-
-        const { page = 1 } = request.query;
         
-        const incident = await connection('incidents')
-                                .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
-                                .limit(5)
-                                .offset((page-1)*5)
-                                .select(['incidents.*', 
-                                        'ongs.name', 
-                                        'ongs.city', 
-                                        'ongs.uf', 
-                                        'ongs.email',
-                                        'ongs.whatsapp']);
 
-        response.header('X-total-count', count['count(*)']);//manda o total de ocorrencias pelo header
+        
+         const { page = 1 } = request.query;
+        
+         const incident = await connection('incidents')
+                                 .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
+                                 .limit(6)
+                                 .offset((page-1)*6)
+                                 .select(['incidents.*', 
+                                         'ongs.name', 
+                                         'ongs.city', 
+                                         'ongs.uf', 
+                                         'ongs.email',
+                                         'ongs.whatsapp']);
+
+        response.header('X-Total-Count', count['count(*)']);//manda o total de ocorrencias pelo header
 
         return response.json(incident);
          

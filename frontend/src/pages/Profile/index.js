@@ -45,7 +45,7 @@ export default function Profile(){
     function handleLogon(){
         localStorage.clear();
 
-        history.push('/');
+        history.push('/login');
     }
 
     return (
@@ -68,22 +68,22 @@ export default function Profile(){
             <ul>
                {incidents.map( incidents => (
                     <li key={incidents.id}>
-                    <strong>CASO: </strong>
-                    <p> {incidents.title} </p>
+                        <strong>CASO: </strong>
+                        <p> {incidents.title} </p>
 
-                    <strong> DESCRIÇAO: </strong>
-                    <p> { incidents.description } </p>
+                        <strong> DESCRIÇAO: </strong>
+                        <p> { incidents.description } </p>
 
-                    <strong>VALOR: </strong>
-                    <p> { Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(incidents.value) } </p>
+                        <strong>VALOR: </strong>
+                        <p> { Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL' }).format(incidents.value) } </p>
 
-                    <button 
-                        type="button"
-                        onClick={() => handleDeleteIncident(incidents.id)}       
-                    > 
-                        <FiTrash2 size={16} />
-                    </button>
-                </li>
+                        <button 
+                            type="button"
+                            onClick={() => handleDeleteIncident(incidents.id)}       
+                        > 
+                            <FiTrash2 size={16} />
+                        </button>
+                    </li>
                ))}
             </ul>
 
