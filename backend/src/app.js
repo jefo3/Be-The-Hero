@@ -14,4 +14,4 @@ app.use(express.json());//informa q vou receber informações em formato JSON
 app.use(routes);
 app.use(errors());
 
-app.listen(3333);
+module.exports = app;
