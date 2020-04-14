@@ -8,6 +8,8 @@ import logoImg from '../../assets/logo.svg'
 
 import api from '../../services/api';
 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Register() {
     const [name, setName] = useState('');
@@ -32,16 +34,20 @@ export default function Register() {
         try{
             const response = await api.post('/ongs', data);
             
-            alert(`Seu ID: ${response.data.id}`);
+            alert(`Seu ID: ${response.data.id}`)
+                        
             history.push('/login')
         }catch(err){
-            alert('Falha no cadastro');
+            toast.error('Falha no cadastro')
         }
     }
 
     return (
         <div className="register-container">
             <div className="content">
+
+                <ToastContainer/>
+
                 <section>
                     <img src={logoImg} alt="Be The Hero"/>
                     

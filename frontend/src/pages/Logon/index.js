@@ -11,6 +11,9 @@ import logoImg from '../../assets/logo.svg';
 
 import api from '../../services/api';
 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Logon() {
     
     const [id, setId] = useState('');
@@ -28,12 +31,15 @@ export default function Logon() {
             history.push('/profile');
 
         }catch(err) {
-            alert('Falha ao conectar, verifique seu ID');
+            toast.error('Falha ao conectar, verifique seu ID')
         }
     }
 
     return (
         <div className="logon-conteiner">
+            
+            <ToastContainer/>
+
             <section className="form">
                 
                 <img src={logoImg}/>

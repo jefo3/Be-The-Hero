@@ -7,6 +7,9 @@ import logoImg from '../../assets/logo.svg'
 
 import api from '../../services/api'
 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function NewIncident(){
 
     const ongId = localStorage.getItem('ongId');
@@ -35,13 +38,16 @@ export default function NewIncident(){
             
             history.push('/profile')
         }catch(err) {
-            alert('erro ao cadastar caso, tente novamente');
+            toast.warn('erro ao cadastar caso, tente novamente')
         }
     }
 
-    return (
+    return ( 
         <div className="new-incident-container">
         <div className="content">
+           
+            <ToastContainer/>   
+           
             <section>
                 <img src={logoImg} alt="Be The Hero"/>
                 
