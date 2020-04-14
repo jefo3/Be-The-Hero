@@ -9,7 +9,11 @@ const sessionsController = require('./controller/sessionsController');
 
 const routes = express.Router();
 
-routes.post('/sessions', sessionsController.login);
+routes.post('/sessions', celebrate({
+    [Segments.BODY]: Joi.object().keys({
+        id: Joi.string().required().length(8),
+    })
+}) ,sessionsController.login);
 
 routes.get('/ongs', ongsController.index);
 
@@ -29,7 +33,17 @@ routes.get('/profile', celebrate({
     }).unknown()
 }) ,profileController.index);
 
-routes.post('/incidents', incidentsController.create);
+routes.post('/incidents', celebrate({
+    [Segments.HEADERS]: Joi.object({
+        authorization: Joi.string().required().length(8),
+    }).unknown(),
+
+    [Segments.BODY]: Joi.object().keys({
+        title: Joi.string().required(),
+	    description: Joi.string().required(),
+	    value: Joi.number().required()
+    })
+}) ,incidentsController.create);
 
 routes.get('/incidents', celebrate({
     [Segments.QUERY]: Joi.object().keys({
